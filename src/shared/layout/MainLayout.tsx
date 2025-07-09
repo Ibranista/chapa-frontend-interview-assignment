@@ -25,7 +25,7 @@ export default function MainLayout() {
         <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
             <div style={{ display: "flex", flex: 1 }}>
                 {error && <div className="error-msg">{error}</div>}
-                {user && (
+                {user?.user && (
                     <button style={{ position: 'fixed', top: 16, right: 16, zIndex: 1000 }} onClick={() => dispatch(logout() as any)}>
                         Logout
                     </button>

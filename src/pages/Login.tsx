@@ -13,8 +13,8 @@ const Login: React.FC = () => {
 
     if (userData.loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#7DC242] via-[#A6E67B] to-[#7DC242]">
-                <div className="text-center text-lg font-semibold text-[#4B6B1A] bg-white/80 px-8 py-6 rounded-xl shadow-lg">
+            <div className="form-main-wrapper">
+                <div className="form-main-loading-text">
                     Loading...
                 </div>
             </div>
@@ -30,11 +30,11 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#7DC242] via-[#A6E67B] to-[#7DC242]">
-            <div className="w-full max-w-lg mx-auto p-12 bg-white/95 rounded-3xl shadow-2xl border border-[#7DC242]/20">
-                <div className="flex flex-col items-center mb-10">
+        <div className="form-main-wrapper">
+            <div className="form-inner-wrapper">
+                <div className="login-form">
                     <img src={logo} alt="Logo" className="w-20 h-20 mb-3" />
-                    <h2 className="text-4xl font-extrabold text-[#7DC242] mb-2 tracking-tight">Welcome Back</h2>
+                    <h2 className="login-welcome">Welcome Back</h2>
                     <p className="text-[#4B6B1A] text-base">Sign in to your account</p>
                 </div>
                 <Formik
@@ -53,7 +53,7 @@ const Login: React.FC = () => {
                                     name="username"
                                     placeholder="Username"
                                     autoComplete="username"
-                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7DC242] focus:border-[#7DC242] transition placeholder-gray-400 text-lg"
+                                    className="field-style"
                                 />
                                 <ErrorMessage name="username" component="div" className="text-red-500 text-xs mt-1 ml-1" />
                             </div>
@@ -67,13 +67,13 @@ const Login: React.FC = () => {
                                     name="password"
                                     placeholder="Password"
                                     autoComplete="current-password"
-                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7DC242] focus:border-[#7DC242] transition placeholder-gray-400 text-lg"
+                                    className="field-style"
                                 />
                                 <ErrorMessage name="password" component="div" className="text-red-500 text-xs mt-1 ml-1" />
                             </div>
 
                             {userData.error && (
-                                <div className="bg-red-100 border border-red-300 text-red-600 text-sm rounded-md px-3 py-2 text-center animate-fade-in">
+                                <div className="error-style">
                                     {userData.error}
                                 </div>
                             )}
@@ -83,7 +83,7 @@ const Login: React.FC = () => {
                                 disabled={isSubmitting || userData.loading}
                                 className={`w-full py-3 px-4 rounded-xl text-white font-bold shadow-md text-lg transition-all duration-200 ${userData.loading || isSubmitting
                                     ? "bg-[#A6E67B] cursor-not-allowed"
-                                    : "bg-gradient-to-r from-[#7DC242] to-[#4B6B1A] hover:from-[#6BBF2B] hover:to-[#3E5C16] focus:ring-2 focus:ring-[#7DC242] focus:outline-none"}
+                                    : "not-submitting-btn-style"}
                                 `}
                             >
                                 {userData.loading || isSubmitting ? "Logging in..." : "Login"}
