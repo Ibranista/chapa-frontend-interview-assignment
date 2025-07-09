@@ -8,7 +8,7 @@ import { router } from "@/routes/index.tsx";
 
 if (import.meta.env.MODE === 'development') {
   const { worker } = await import('./api/browser');
-  worker.start();
+  await worker.start();
 }
 
 createRoot(document.getElementById("root")!).render(
