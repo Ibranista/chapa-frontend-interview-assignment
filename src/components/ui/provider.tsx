@@ -3,8 +3,8 @@
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
 import {
   ColorModeProvider,
-  type ColorModeProviderProps,
 } from "./color-mode"
+import type { ColorModeProviderProps } from "@/types/color-mode"
 
 export function Provider(props: ColorModeProviderProps) {
   return (

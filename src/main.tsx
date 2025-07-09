@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store.ts";
 import { RouterProvider } from "react-router-dom";
 import { router } from "@/routes/index.tsx";
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 
 if (import.meta.env.MODE === 'development') {
   const { worker } = await import('./api/browser');
@@ -15,9 +14,7 @@ if (import.meta.env.MODE === 'development') {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <ChakraProvider value={defaultSystem}>
-        <RouterProvider router={router} />
-      </ChakraProvider>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>
 );
