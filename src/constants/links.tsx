@@ -1,4 +1,4 @@
-import { FaHandHolding, FaMoneyBill, FaMoneyBillWave, FaSignOutAlt, FaToolbox, FaUser } from "react-icons/fa";
+import { FaMoneyBill, FaMoneyBillWave, FaSignOutAlt, FaToolbox, FaUser } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
 
 export const Links = (role: string) => [
@@ -14,11 +14,6 @@ export const Links = (role: string) => [
             icon: <FaToolbox />
         }]
         : []),
-    {
-        name: "Greetings",
-        path: "/greetings",
-        icon: <FaHandHolding />,
-    },
     {
         name: "Users",
         path: "/users",
