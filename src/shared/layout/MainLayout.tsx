@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Demo } from "./sideBar";
+import { Sidebar } from "./sideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "@/features/selectors/user.selector";
 import { logout } from "@/features/thunk/auth.thunk";
@@ -30,7 +30,7 @@ export default function MainLayout() {
                         Logout
                     </button>
                 )}
-                <Demo />
+                <Sidebar />
                 <div style={{ flex: 1, marginLeft: 0, transition: "margin 0.2s" }}>
                     {user?.user && <WalletBalance balance={balance} />}
                     <Outlet />
