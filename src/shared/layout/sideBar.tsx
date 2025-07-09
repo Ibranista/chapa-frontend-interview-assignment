@@ -21,9 +21,9 @@ export const Sidebar = () => {
     const bottomLink = links[links.length - 1]
 
     return (
-        <div className="flex">
+        <section className="flex">
             <nav
-                className={`bg-white h-screen shadow-md flex flex-col items-center pt-6 relative transition-all duration-200 ${isCollapsed ? "w-[90px]" : "w-[260px]"}`}
+                className={`relative top-0 left-0 bg-white h-screen shadow-md flex flex-col items-center pt-6 transition-all duration-200 ${isCollapsed ? "w-[90px]" : "w-[260px]"}`}
             >
                 <div className="absolute top-4 left-2">
                     <button
@@ -74,6 +74,6 @@ export const Sidebar = () => {
                 )}
             </nav>
 
-        </div>
+        </section>
     )
 }

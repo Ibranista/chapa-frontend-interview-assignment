@@ -8,10 +8,10 @@ function WalletBalance({ balance }: WalletBalanceProps) {
     if (!user?.user) return null;
 
     return (
-        <div style={{ marginTop: "1rem" }}>
-            <h3>Wallet Balance</h3>
-            <p>
-                <strong>${balance?.toFixed(2)}</strong>
+        <div className="mt-4 p-4 bg-white rounded-lg shadow-md">
+            <h3 className="text-lg font-semibold text-[#7DC242]">Wallet Balance</h3>
+            <p className="text-2xl font-bold text-gray-800">
+                ${balance?.toFixed(2)}
             </p>
         </div>
     );

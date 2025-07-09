@@ -2,11 +2,18 @@ import { selectUser } from "@/features/selectors/user.selector";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-// this is a form to initiate a transaction connected with the wallet balance
 function TransactionForm() {
+    const user = useSelector(selectUser);
+    const [amount, setAmount] = useState<number>(0);
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState(() => new Date().toISOString().split("T")[0]);
+
+    const [loading, setLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
     const fetchDashboardData = async () => {
         try {
-            // Only fetch if user is logged in
             if (!user) return;
 
             const [balanceRes, txRes] = await Promise.all([
@@ -17,22 +24,11 @@ function TransactionForm() {
             if (!balanceRes.ok || !txRes.ok) {
                 throw new Error("Failed to load dashboard data");
             }
-
-
         } catch (err) {
             console.error("Data fetch error:", err);
             setError("Failed to load dashboard data");
         }
     };
-
-    const user = useSelector(selectUser);
-    const [amount, setAmount] = useState<number>(0);
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState(() => new Date().toISOString().split("T")[0]);
-
-    const [loading, setLoading] = useState(false);
-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -63,7 +59,6 @@ function TransactionForm() {
             setDescription("");
             setDate(new Date().toISOString().split("T")[0]);
             fetchDashboardData();
-
         } catch (err: any) {
             setError(err.message || "An unexpected error occurred.");
         } finally {
@@ -74,37 +69,64 @@ function TransactionForm() {
     if (!user) return null;
 
     return (
-        <div style={{ marginTop: "2rem" }}>
-            <h3>Initiate Transaction</h3>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.5rem", maxWidth: "300px" }}>
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(parseFloat(e.target.value))}
-                    placeholder="Amount (use negative to spend)"
-                    required
-                />
-                <input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Description"
-                    required
-                />
-                <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    required
-                />
-                <button type="submit" disabled={loading}>
-                    {loading ? "Processing..." : "Submit Transaction"}
-                </button>
-            </form>
+        <section className="">
+            <section className="form-inner-wrapper">
+                <article className="login-form">
+                    <h2 className="login-welcome">Initiate Transaction</h2>
+                    <p className="text-[#4B6B1A] text-base">Use negative amount to spend from wallet</p>
+                </article>
 
-            {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-        </div>
+                <form onSubmit={handleSubmit} className="space-y-8 p-3">
+                    <div className="relative">
+                        <input
+                            type="number"
+                            value={amount}
+                            onChange={(e) => setAmount(parseFloat(e.target.value))}
+                            placeholder="Amount (e.g. -100)"
+                            required
+                            disabled={loading}
+                            className="field-style"
+                        />
+                    </div>
+
+                    <div className="relative">
+                        <input
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Description"
+                            required
+                            disabled={loading}
+                            className="field-style"
+                        />
+                    </div>
+
+                    <div className="relative">
+                        <input
+                            type="date"
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            required
+                            disabled={loading}
+                            className="field-style"
+                        />
+                    </div>
+
+                    {successMessage && (
+                        <div className="success-style animate-fade-in">{successMessage}</div>
+                    )}
+                    {error && <div className="error-style animate-fade-in">{error}</div>}
+
+                    <button
+                        type="submit"
+                        disabled={loading || !amount || !description.trim() || !date}
+                        className={`w-full py-3 px-4 rounded-xl text-white font-bold shadow-md text-lg transition-all duration-200 ${loading ? "bg-[#A6E67B] cursor-not-allowed" : "not-submitting-btn-style"}`}
+                    >
+                        {loading ? "Processing..." : "Submit Transaction"}
+                    </button>
+                </form>
+            </section>
+        </section>
     );
 }
 

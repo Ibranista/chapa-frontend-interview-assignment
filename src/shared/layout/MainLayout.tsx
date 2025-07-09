@@ -30,7 +30,9 @@ export default function MainLayout() {
                     chapa frontend developer test assignment dashboard
                 </header>
                 {user?.user && <WalletBalance balance={balance} />}
-                <Outlet />
+                <div className="p-5">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );

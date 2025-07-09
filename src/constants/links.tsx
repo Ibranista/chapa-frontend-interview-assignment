@@ -14,16 +14,16 @@ export const Links = (role: string) => [
             icon: <FaToolbox />
         }]
         : []),
-    {
-        name: "Users",
-        path: "/users",
-        icon: <FaUser />,
-    },
+
     ...(role === "superadmin" || role === "admin" ? [{
         name: "Transaction",
         path: "/transaction-summary",
         icon: <FaMoneyBill />,
-    }] : []),
+    }, {
+        name: "Users",
+        path: "/users",
+        icon: <FaUser />,
+    },] : []),
     ...(role === "user"
         ? [{
             name: "Initiate Transaction",
