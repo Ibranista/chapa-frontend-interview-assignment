@@ -24,9 +24,8 @@ export default function ProtectedRoute({
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-    // to prevent site attack tell as if this kind of rout does not exist.
     if (allowedRoles && !allowedRoles.includes(user.user?.role as User["role"])) {
-        return <h1>Page Not Found!</h1>
+        return null;
     }
 
     return <>{children}</>;

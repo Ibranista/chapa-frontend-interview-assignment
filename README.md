@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# Chapa Frontend Interview Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a frontend assignment built with **React**, **TypeScript**, and **Vite**. It demonstrates a simple dashboard for managing users and transactions, with a focus on clean code, modular structure, and basic state management using Redux.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication**: Basic login flow and user session management.
+- **Dashboard**: Overview of wallet balance and recent transactions.
+- **User Management**: View, manage, and display users in a table.
+- **Transaction Summary**: Table view of user payment summaries.
+- **Recent Transactions**: Table view of recent transactions for the logged-in user.
+- **Reusable Components**: Shared table and page header components for consistent UI.
+- **API Integration**: Fetches data from mock API endpoints.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Install dependencies**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
+2. **Run the development server**
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
+3. **Open in browser**
+   Visit [http://localhost:5173](http://localhost:5173) to view the app.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- `src/pages/` — Main pages (Login, Dashboard, Users, Transactions, etc.)
+- `src/features/` — Redux slices, selectors, and thunks
+- `src/shared/components/` — Reusable UI components (Table, PageHeader, etc.)
+- `src/api/` — API handlers and browser/server mocks
+- `src/constants/` — Static data and links
+- `src/types/` — TypeScript type definitions
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Challenge & Reflection
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Time:** Due to overtime working, I couldn't implement all the ideas I had in mind. Some features I wanted to add or improve include:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Rebuilding the project in **Next.js**, which I'm more comfortable with
+- Implementing a **light and dark theme** toggle
+- Displaying data in a better styled **chart**
+- Improving the **color theme** for a more polished look
+- Preparing more **custom, reusable components** for the UI
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Despite these constraints, the project demonstrates the core requirements and a modular approach. Thank you for reviewing my submission!
