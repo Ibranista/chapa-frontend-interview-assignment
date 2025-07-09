@@ -6,6 +6,7 @@ import { selectUser } from "@/features/selectors/user.selector";
 import { login } from "@/features/thunk/auth.thunk";
 import { loginSchema, registerInitialValues } from "@/schema/auth.schema";
 import logo from "@/assets/logo.svg";
+import { FaLock, FaUser } from "react-icons/fa";
 
 const Login: React.FC = () => {
     const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Login: React.FC = () => {
                         <Form className="space-y-8 p-3">
                             <div className="relative">
                                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7DC242]">
-                                    <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="2" /></svg>
+                                    <FaUser className="mb-4" />
                                 </span>
                                 <Field
                                     type="text"
@@ -60,7 +61,7 @@ const Login: React.FC = () => {
 
                             <div className="relative">
                                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#7DC242]">
-                                    <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect width="16" height="12" x="4" y="8" stroke="currentColor" strokeWidth="2" rx="2" /><path stroke="currentColor" strokeWidth="2" d="M8 8V6a4 4 0 1 1 8 0v2" /></svg>
+                                    <FaLock className="mb-4" />
                                 </span>
                                 <Field
                                     type="password"
