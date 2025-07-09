@@ -3,6 +3,15 @@ import { fetchTransactionSummary } from "@/features/thunk/transaction.thunk";
 import type { AppDispatch } from "@/store/store";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableHead,
+    TableCell,
+} from "@/shared/components/table";
+import { PageHeader } from "@/shared/components/pageHeader";
 
 // this is a table to display the transaction summary
 const TransactionSummaryTable: React.FC = () => {
@@ -13,40 +22,58 @@ const TransactionSummaryTable: React.FC = () => {
         dispatch(fetchTransactionSummary());
     }, [dispatch]);
 
-    if (loading) return <p>Loading payment summary...</p>;
-    if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+    if (loading) return <div className="mt-8 text-center text-gray-600">Loading payment summary...</div>;
+    if (error) return <div className="mt-8 text-center text-red-500">Error: {error}</div>;
 
     return (
-        <div>
-            <h3>User Payment Summary</h3>
+        <div className="mt-12 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <PageHeader title="User Payment Summary" description="Overview of all user transactions" />
+
             {summaries.length === 0 ? (
-                <p>No transactions found.</p>
+                <div className="text-center py-8 bg-gray-50 rounded-lg">
+                    <p className="text-gray-500">No transactions found.</p>
+                </div>
             ) : (
-                <table
-                    border={1}
-                    cellPadding={8}
-                    cellSpacing={0}
-                    style={{ borderCollapse: "collapse" }}
-                >
-                    <thead>
-                        <tr>
-                            <th>User Name</th>
-                            <th>User ID</th>
-                            <th>Total Payments</th>
-                            <th>Last Payment Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {summaries.map((summary) => (
-                            <tr key={summary.userId}>
-                                <td>{summary.userName}</td>
-                                <td>{summary.userId}</td>
-                                <td>${summary.totalPayments.toFixed(2)}</td>
-                                <td>{summary.lastPaymentDate}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className="bg-white shadow-sm rounded-lg overflow-hidden">
+                    <Table className="table-container-style">
+                        <TableHeader>
+                            <TableRow className="table-row">
+                                <TableHead className="table-head-style">
+                                    Name
+                                </TableHead>
+                                <TableHead className="table-head-style">
+                                    User ID
+                                </TableHead>
+                                <TableHead className="table-head-style">
+                                    Total Payments
+                                </TableHead>
+                                <TableHead className="table-head-style">
+                                    Last Payment Date
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody className="bg-white divide-y divide-gray-200">
+                            {summaries.map((summary) => (
+                                <TableRow key={summary.userId} className="hover:bg-gray-50">
+                                    <TableCell className="table-cell-style">
+                                        <p className="table-cell-text-style">{summary.userName}</p>
+                                    </TableCell>
+                                    <TableCell className="table-cell-style">
+                                        <p className="table-cell-text-date-style">{summary.userId}</p>
+                                    </TableCell>
+                                    <TableCell className="table-cell-style">
+                                        <p className="table-cell-text-style font-semibold">
+                                            ${summary.totalPayments.toFixed(2)}
+                                        </p>
+                                    </TableCell>
+                                    <TableCell className="table-cell-style">
+                                        <p className="table-cell-text-date-style">{summary.lastPaymentDate}</p>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             )}
         </div>
     );

@@ -37,4 +37,32 @@
         @apply bg-gradient-to-r from-[#7DC242] to-[#4B6B1A] hover:from-[#6BBF2B] hover:to-[#3E5C16] focus:ring-2 focus:ring-[#7DC242] focus:outline-none
     }
 
+    .table-container-style {
+        @apply min-w-full divide-y divide-gray-200
+    }
+
+    .table-row {
+        @apply bg-gray-50
+    }
+
+    .table-head-style {
+        @apply px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider
+    }
+
+    .table-body-style {
+        @apply bg-white divide-y divide-gray-200
+    }
+
+    .table-cell-style {
+        @apply px-6 py-4 whitespace-nowrap
+    }
+
+    .table-cell-text-style {
+        @apply text-sm font-medium text-gray-900
+    }
+
+    .table-cell-text-date-style {
+        @apply text-sm text-gray-500
+    }
+
 }

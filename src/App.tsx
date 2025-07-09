@@ -17,8 +17,9 @@ function App() {
   if (!user?.id) return <div>Loading...</div>;
 
   return (
-    <div className="dashboard-section">
-      <div>Welcome, {user?.name} ({user?.role})</div>
+    <div className="">
+      <div className="text-2xl font-bold text-[#7dc242]">Welcome, {user?.name}!</div>
+      <div className="text-gray-500 text-lg">Role: <span className="font-semibold text-[#7dc242]">{user?.role}</span></div>
     </div>
   );
 }
