@@ -73,7 +73,7 @@ const Login: React.FC = () => {
                             </div>
 
                             {userData.error && (
-                                <div className="error-style">
+                                <div className="error-style animate-fade-in">
                                     {userData.error}
                                 </div>
                             )}

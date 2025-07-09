@@ -30,7 +30,7 @@
     }
 
     .error-style {
-        @apply bg-red-100 border border-red-300 text-red-600 text-sm rounded-md px-3 py-2 text-center animate-fade-in
+        @apply bg-red-100 border border-red-300 text-red-600 text-sm rounded-md px-3 py-2 text-center
     }
 
     .not-submitting-btn-style {
