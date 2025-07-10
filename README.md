@@ -49,3 +49,14 @@ This project is a frontend assignment built with **React**, **TypeScript**, and 
 - Preparing more **custom, reusable components** for the UI
 
 Despite these constraints, the project demonstrates the core requirements and a modular approach. Thank you for reviewing my submission!
+
+## Login Credentials
+
+You can use the following credentials to log in to the app:
+
+| Role         | Username     | Password   |
+|--------------|-------------|------------|
+| User         | alice       | userpass   |
+| User         | bob         | userpass   |
+| Admin        | admin       | adminpass  |
+| Super Admin  | superadmin  | superpass  |
